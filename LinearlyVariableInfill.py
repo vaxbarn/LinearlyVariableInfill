@@ -3,7 +3,7 @@
 Linearly Variable Infill for 3D prints.
 
 Author: Barnabas Nemeth
-Version: 1.0
+Version: 1.5
 
 """
 
@@ -369,14 +369,6 @@ class LinearlyVariableInfill(Script):
         infillpattern = extrud[extruder_nr].getProperty("infill_pattern", "value")
         connectinfill = extrud[extruder_nr].getProperty("zig_zaggify_infill", "value")
         
-
-        # Note : Walls are used to define the boundary of the infill segment and detect if the point are in the 'Gradiant' area
-      #  infillbeforewalls = extrud[extruder_nr].getProperty("infill_before_walls", "value")
-       # if infillbeforewalls == True:
-            #
-        #    Logger.log('d', 'Gcode must be generate with the mode infill_before_walls to off')
-         #   Message('It is important to make sure that the Walls are printed before the Infill (Infill before Walls must be set to  OFF)', title = catalog.i18nc("@info:title", "Post Processing")).show()
-          #  return None
         
         """Parse Gcode and modify infill portions with an extrusion width gradient."""
         currentSection = Section.NOTHING
@@ -512,14 +504,6 @@ class LinearlyVariableInfill(Script):
                                     E_inCode_last = extrudeLength
                                     step_number = step_number + 1 
                                     
-
-                                # MissingSegment
-                             #   fullSegmentLengthRatio = two_points_distance(lastPosition , currentPosition) / fullSegmentLength
-                              #  segmentSpeed = current_speed
-                               # if segmentSpeed < (current_speed * min_speed_factor):
-                                #    segmentSpeed = current_speed * min_speed_factor
-                               # if variable_speed:
-                                #    stringFeed = " F{}".format(int(segmentSpeed))
                     
                                 segmentSpeed = current_speed * min_speed_factor
                                 lastSpeed = " F{}".format(int(segmentSpeed))
