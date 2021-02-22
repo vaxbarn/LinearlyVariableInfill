@@ -3,7 +3,7 @@
 Linearly Variable Infill for 3D prints.
 
 Author: Barnabas Nemeth
-Version: 1.5
+Version: 1.0
 
 """
 
